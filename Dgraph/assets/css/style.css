@@ -355,32 +355,14 @@ textarea {
 .container {
   padding-left: 15px;
   padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .container-full {
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-}
-@media only screen and (min-width: 767px) {
-  .container,
-  .container-full {
-    width: 768px;
-  }
-}
-@media only screen and (min-width: 989px) {
-  .container,
-  .container-full {
-    width: 990px;
-  }
-}
-@media only screen and (min-width: 1169px) {
-  .container,
-  .container-full {
-    width: 1170px;
-  }
 }
 .col-1,
 .col-2,
