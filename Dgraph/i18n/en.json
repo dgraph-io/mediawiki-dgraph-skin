@@ -2,7 +2,7 @@
 	"@metadata": {
 		"authors": []
 	},
-	"skinname-dgraph": "Dgraph,
+	"skinname-dgraph": "Dgraph",
 	"dgraph-skin-desc": "Modern version of MonoBook with fresh look and many usability improvements",
 	"dgraph.css": "/* CSS placed here will affect users of the Dgraph skin */",
 	"dgraph.js": "/* Any JavaScript here will be loaded for users using the Dgraph skin */",
