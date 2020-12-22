@@ -60,7 +60,7 @@ class DgraphTemplate extends BaseTemplate {
 
 				$xmlID = isset( $link['id'] ) ? $link['id'] : 'ca-' . $xmlID;
 				$nav[$section][$key]['attributes'] =
-					' id="' . Sanitizer::escapeId( $xmlID ) . '"';
+					' id="' . Sanitizer::escapeIdForAttribute( $xmlID ) . '"';
 				if ( $link['class'] ) {
 					$nav[$section][$key]['attributes'] .=
 						' class="' . htmlspecialchars( $link['class'] ) . '"';
@@ -428,10 +428,10 @@ class DgraphTemplate extends BaseTemplate {
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
-		$labelId = Sanitizer::escapeId( "p-$name-label" );
+		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 		?>
 		<div class="portal" role="navigation" id='<?php
-		echo Sanitizer::escapeId( "p-$name" )
+		echo Sanitizer::escapeIdForAttribute( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
 		?> aria-labelledby='<?php echo $labelId ?>'>

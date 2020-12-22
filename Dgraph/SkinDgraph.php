@@ -33,15 +33,16 @@ class SkinDgraph extends SkinTemplate {
 	/**
 	 * @var Config
 	 */
-	private $vectorConfig;
+	private $dConfig;
 
-	public function __construct() {
-		$this->vectorConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'vector' );
-	}
+	public function __construct( $options = [] ) {
+		$this->dConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'vector' );
 
-	// Dgraph Stuff
-	function addToBodyAttributes( $out, &$bodyAttrs ) {
-		$bodyAttrs['class'] = 'page';
+		if ( $this->dConfig->get( 'DgraphResponsive' ) ) {
+			$options['responsive'] = true;
+			$options['styles'][] = 'skins.dgraph.styles.responsive';
+		}
+		parent::__construct( $options );
 	}
 
 	/**
@@ -50,11 +51,6 @@ class SkinDgraph extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-
-		if ( $this->vectorConfig->get( 'VectorResponsive' ) ) {
-			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
-			$out->addModuleStyles( 'skins.vector.styles.responsive' );
-		}
 
 		// Append CSS which includes IE only behavior fixes for hover support -
 		// this is better than including this in a CSS file since it doesn't
@@ -76,26 +72,12 @@ class SkinDgraph extends SkinTemplate {
 				htmlspecialchars( $this->getConfig()->get( 'LocalStylePath' ) ) .
 				'/' . $this->stylename . '/assets/js/modernizr.min.js"></script>'
 		);
-
-		$out->addModules( array( 'skins.vector.js' ) );
-	}
-
-	/**
-	 * Loads skin and user CSS files.
-	 * @param OutputPage $out
-	 */
-	function setupSkinUserCss( OutputPage $out ) {
-		parent::setupSkinUserCss( $out );
-
-		$styles = array( 'mediawiki.skinning.interface', 'skins.vector.styles' );
-		Hooks::run( 'SkinVectorStyleModules', array( $this, &$styles ) );
-		$out->addModuleStyles( $styles );
 	}
 
 	/**
 	 * Override to pass our Config instance to it
 	 */
 	public function setupTemplate( $classname, $repository = false, $cache_dir = false ) {
-		return new $classname( $this->vectorConfig );
+		return new $classname( $this->dConfig );
 	}
 }

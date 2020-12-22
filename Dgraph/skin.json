@@ -12,8 +12,24 @@
 	"ConfigRegistry": {
 		"dgraph": "GlobalVarConfig::newInstance"
 	},
+	"requires": {
+		"MediaWiki": ">= 1.36.0"
+	},
 	"ValidSkinNames": {
-		"dgraph": "Dgraph"
+		"dgraph": {
+			"class": "SkinDgraph",
+			"args": [
+				{
+					"name": "dgraph",
+					"template": "DgraphTemplate",
+					"styles": [
+						"skins.dgraph.styles"
+					],
+					"scripts": [
+					]
+				}
+			]
+		}
 	},
 	"MessagesDirs": {
 		"Dgraph": [
@@ -27,6 +43,7 @@
 	"@note": "When modifying skins.dgraph.styles definition, make sure the installer still works",
 	"ResourceModules": {
 		"skins.dgraph.styles": {
+			"class": "ResourceLoaderSkinModule",
 			"position": "top",
 			"styles": {
 				"screen.less": {
