@@ -1,3 +1,7 @@
+**This repostory is archived and now maintained at [wikimedia/mediawiki-dgraph-skin](https://github.com/wikimedia/mediawiki-dgraph-skin).**
+
+---
+
 For general documentation on the use of skins, see https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Skins
 
 Download and extract the file(s) in a directory called "Dgraph" in your skins/ folder. Note that a base file in the root folder is no longer required in MediaWiki.
